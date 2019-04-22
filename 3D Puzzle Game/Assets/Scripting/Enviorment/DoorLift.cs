@@ -8,7 +8,7 @@ public class DoorLift : MonoBehaviour
 
     public float RaiseDistance;
     public float RaiseSpeed;
-    public float DistanceRaised;
+    float DistanceRaised;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +28,11 @@ public class DoorLift : MonoBehaviour
             StartCoroutine("RaisingDoor");
             Opening = false;
         }
+    }
+
+    public void RaiseDoor()
+    {
+        StartCoroutine("RaisingDoor");
     }
 
     IEnumerator RaisingDoor()
