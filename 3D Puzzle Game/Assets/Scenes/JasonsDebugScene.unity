@@ -251,7 +251,6 @@ MonoBehaviour:
   Opening: 0
   RaiseDistance: 9
   RaiseSpeed: 3
-  DistanceRaised: 0
 --- !u!65 &639563989
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -703,6 +702,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2217795461588697479, guid: e84eec0bbd346004da9d4502e05e5cf9,
+        type: 3}
+      propertyPath: field of view
+      value: 71
       objectReference: {fileID: 0}
     - target: {fileID: 2217795461588697477, guid: e84eec0bbd346004da9d4502e05e5cf9,
         type: 3}
