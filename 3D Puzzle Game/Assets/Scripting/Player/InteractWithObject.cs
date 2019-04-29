@@ -19,7 +19,7 @@ public class InteractWithObject : MonoBehaviour
     void Update()
     {
         CheckTarget();
-        OpenDoors();
+        InteractWithObjects();
     }
 
     void CheckTarget()
@@ -34,21 +34,59 @@ public class InteractWithObject : MonoBehaviour
         }
     }
 
-    void OpenDoors()
+    void InteractWithObjects()
     {
-
-        if (((PointingAt.gameObject.GetComponent("DoorLift") as DoorLift) != null))
+        switch (PointingAt.tag)
         {
-            InteractSymbol.SetActive(true);
+            case "PowerCell":
 
-            if (Input.GetButtonDown("Fire1")){
+                if (PointingAt.GetComponent("Rigidbody") as Rigidbody != null)
+                {
 
-                PointingAt.GetComponent<DoorLift>().RaiseDoor();
+                    InteractSymbol.SetActive(true);
 
-            }                    
-        }else
-        {
-            InteractSymbol.SetActive(false);
+                    if (Input.GetButtonDown("Fire1"))
+                    {
+                        GetComponent<PowerCellInteraction>().GrabPowerCell(PointingAt);                       
+                    }
+
+                }
+                else
+                {
+                    if (Input.GetButtonDown("Fire1"))
+                    {
+                        GetComponent<PowerCellInteraction>().PullPowerCell(PointingAt);
+                    }
+                }
+
+                break;
+
+            case "PowerCellSlot":
+                InteractSymbol.SetActive(true);
+
+                if (Input.GetButtonDown("Fire1"))
+                {
+                    GetComponent<PowerCellInteraction>().PlacePowerCell(PointingAt);
+                }
+
+                break;
+
+            case "Door":
+
+                InteractSymbol.SetActive(true);
+
+                if (Input.GetButtonDown("Fire1"))
+                {
+                    PointingAt.GetComponent<DoorLift>().RaiseDoor();
+                }
+
+                break;
+
+            default:
+                InteractSymbol.SetActive(false);
+                break;
         }
     }
+
 }
+
