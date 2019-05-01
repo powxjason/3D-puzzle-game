@@ -51,33 +51,19 @@ public class InteractWithObject : MonoBehaviour
                     }
 
                 }
-                else
-                {
-                    if (Input.GetButtonDown("Fire1"))
-                    {
-                        GetComponent<PowerCellInteraction>().PullPowerCell(PointingAt);
-                    }
-                }
 
                 break;
 
             case "PowerCellSlot":
                 InteractSymbol.SetActive(true);
 
-                if (Input.GetButtonDown("Fire1"))
+                if (Input.GetButtonDown("Fire1") && PointingAt.gameObject.GetComponent<MeshRenderer>().enabled == false)
                 {
                     GetComponent<PowerCellInteraction>().PlacePowerCell(PointingAt);
                 }
-
-                break;
-
-            case "Door":
-
-                InteractSymbol.SetActive(true);
-
-                if (Input.GetButtonDown("Fire1"))
+                else if (Input.GetButtonDown("Fire1"))
                 {
-                    PointingAt.GetComponent<DoorLift>().RaiseDoor();
+                    GetComponent<PowerCellInteraction>().PullPowerCell(PointingAt);
                 }
 
                 break;

@@ -12,10 +12,11 @@ GameObject:
   - component: {fileID: 3438811574034314102}
   - component: {fileID: 3438811574034314097}
   - component: {fileID: 3438811574034314096}
-  - component: {fileID: 2386035907098637097}
   - component: {fileID: 3438811574034314100}
   - component: {fileID: 3438811574034314101}
-  m_Layer: 0
+  - component: {fileID: 73418331}
+  - component: {fileID: 73418332}
+  m_Layer: 2
   m_Name: Capsule
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -51,7 +52,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3438811574034314099}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -91,27 +92,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.7
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: -0.5, z: 0}
---- !u!114 &2386035907098637097
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3438811574034314099}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81132376e1b58f84598fff0e0d18d52d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mouseX: 0
-  mouseY: 0
-  HorizontalSensitivity: 2
-  VerticalSensitivity: 2
-  Locked: 0
 --- !u!114 &3438811574034314100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,4 +128,36 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 80
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
+--- !u!114 &73418331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3438811574034314099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58ca0f3a54fdedb469867e7f7e4afc77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InteractSymbol: {fileID: 0}
+  PointingAt: {fileID: 0}
+--- !u!114 &73418332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3438811574034314099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd618c484d58c5844a314ce23f546db5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HoldingPowerCell: 0
+  PowerCellCount: 0
+  PowerCellPrefab: {fileID: 0}
+  PowerCellIcon1: {fileID: 0}
+  PowerCellIcon2: {fileID: 0}
+  PowerCellIcon3: {fileID: 0}

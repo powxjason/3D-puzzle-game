@@ -5,6 +5,9 @@ using UnityEngine;
 public class DoorLift : MonoBehaviour
 {
     public bool Opening;
+    public bool Closing;
+
+    public bool open = false;
 
     public float RaiseDistance;
     public float RaiseSpeed;
@@ -24,32 +27,92 @@ public class DoorLift : MonoBehaviour
     void Update()
     {
         if (Opening == true)
-        {            
+        {
             StartCoroutine("RaisingDoor");
             Opening = false;
+        }
+
+        if(Closing == true)
+        {
+            StartCoroutine("LoweringDoor");
+            Closing = false;
         }
     }
 
     public void RaiseDoor()
     {
+        StopCoroutine("RaisingDoor");
+        StopCoroutine("LoweringDoor");
         StartCoroutine("RaisingDoor");
+    }
+
+    public void LowerDoor()
+    {
+        StopCoroutine("RaisingDoor");
+        StopCoroutine("LoweringDoor");
+        StartCoroutine("LoweringDoor");
+    }
+
+    public void TriggerEntered()
+    {
+        if (open == true)
+        {
+            Debug.Log("Closing");
+
+            open = false;
+
+            LowerDoor();
+            Closing = true;
+        }
+        else if (open == false)
+        {
+
+            Debug.Log("Opening");
+            open = true;
+
+            RaiseDoor();
+            Opening = true;
+        }
     }
 
     IEnumerator RaisingDoor()
     {
-
-        while (DistanceRaised < RaiseDistance)
+        while (DistanceRaised < RaiseDistance && open == true)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y + RaiseSpeed, transform.position.z);
 
             DistanceRaised = DistanceRaised + RaiseSpeed;
 
+            if (open == false)
+            {
+                yield break;
+            }
+            else
+            {
             yield return null;
+            }
         }
+        
 
-        Destroy(gameObject);
     }
-    
 
-    
+    IEnumerator LoweringDoor()
+    {
+        while (DistanceRaised > 0 && open == false)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y - RaiseSpeed, transform.position.z);
+
+            DistanceRaised = DistanceRaised - RaiseSpeed;
+
+            if (open == true)
+            {
+                yield break;
+            }
+            else
+            {
+                yield return null;
+            }
+
+        }
+    }    
 }
