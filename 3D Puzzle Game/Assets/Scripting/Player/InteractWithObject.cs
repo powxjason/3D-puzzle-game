@@ -55,6 +55,9 @@ public class InteractWithObject : MonoBehaviour
                 break;
 
             case "PowerCellSlot":
+                if (gameObject.GetComponent<PowerCellInteraction>().PowerCellCount != 0 || PointingAt.GetComponent<MeshRenderer>().enabled == true)
+                {
+
                 InteractSymbol.SetActive(true);
 
                 if (Input.GetButtonDown("Fire1") && PointingAt.gameObject.GetComponent<MeshRenderer>().enabled == false)
@@ -66,6 +69,7 @@ public class InteractWithObject : MonoBehaviour
                     GetComponent<PowerCellInteraction>().PullPowerCell(PointingAt);
                 }
 
+                }
                 break;
 
             default:

@@ -11,7 +11,7 @@ public class DoorLift : MonoBehaviour
 
     public float RaiseDistance;
     public float RaiseSpeed;
-    float DistanceRaised;
+    public float DistanceRaised;
 
     // Start is called before the first frame update
     void Start()
@@ -77,20 +77,14 @@ public class DoorLift : MonoBehaviour
 
     IEnumerator RaisingDoor()
     {
-        while (DistanceRaised < RaiseDistance && open == true)
+        while (DistanceRaised < RaiseDistance)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y + RaiseSpeed, transform.position.z);
 
             DistanceRaised = DistanceRaised + RaiseSpeed;
 
-            if (open == false)
-            {
-                yield break;
-            }
-            else
-            {
             yield return null;
-            }
+            
         }
         
 
@@ -98,20 +92,14 @@ public class DoorLift : MonoBehaviour
 
     IEnumerator LoweringDoor()
     {
-        while (DistanceRaised > 0 && open == false)
+        while (DistanceRaised > 0)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y - RaiseSpeed, transform.position.z);
 
             DistanceRaised = DistanceRaised - RaiseSpeed;
 
-            if (open == true)
-            {
-                yield break;
-            }
-            else
-            {
-                yield return null;
-            }
+            yield return null;
+
 
         }
     }    

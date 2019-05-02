@@ -6,25 +6,25 @@ public class DoorTriggerClose : MonoBehaviour
 {
     public GameObject Door;
 
-    public void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player")
         {
-            Door.GetComponent<DoorLift>().TriggerEntered();
-            Debug.Log("TriggerEntered");
+            Debug.Log("Raising Door");
+
+             Door.GetComponent<DoorLift>().RaiseDoor();
         }
     }
 
-    public void OnCollisionEnter(Collision collision)
+    private void OnTriggerExit(Collider other)
     {
-        if (collision.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
-            Door.GetComponent<DoorLift>().TriggerEntered();
-            Debug.Log("TriggerEntered");
+            Debug.Log("Lowering Door");
+
+            Door.GetComponent<DoorLift>().LowerDoor();
         }
     }
-
-
 
 
 }

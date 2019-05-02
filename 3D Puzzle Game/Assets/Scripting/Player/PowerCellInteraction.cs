@@ -29,6 +29,7 @@ public class PowerCellInteraction : MonoBehaviour
         // Removes a Power Cell from your inventory and places it in a slot    
         if (PowerCellCount > 0)
         {
+            CellPlace.GetComponent<PowerCellLights>().Placed();
             CellPlace.GetComponent<MeshRenderer>().enabled = true;
             PowerCellCount -= 1;
             UpdateUI();
@@ -37,7 +38,8 @@ public class PowerCellInteraction : MonoBehaviour
 
     public void PullPowerCell(GameObject CellPlace)
     {
-        // Adds a Power Cell to your inventory and takes it out of a slot        
+        // Adds a Power Cell to your inventory and takes it out of a slot     
+        CellPlace.GetComponent<PowerCellLights>().Grabed();
         CellPlace.GetComponent<MeshRenderer>().enabled = false;
         PowerCellCount += 1;
         UpdateUI();
