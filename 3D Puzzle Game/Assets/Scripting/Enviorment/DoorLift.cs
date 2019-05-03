@@ -44,6 +44,7 @@ public class DoorLift : MonoBehaviour
         StopCoroutine("RaisingDoor");
         StopCoroutine("LoweringDoor");
         StartCoroutine("RaisingDoor");
+        open = true;
     }
 
     public void LowerDoor()
@@ -51,6 +52,7 @@ public class DoorLift : MonoBehaviour
         StopCoroutine("RaisingDoor");
         StopCoroutine("LoweringDoor");
         StartCoroutine("LoweringDoor");
+        open = false;
     }
 
     public void TriggerEntered()

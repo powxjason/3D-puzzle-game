@@ -72,6 +72,17 @@ public class InteractWithObject : MonoBehaviour
                 }
                 break;
 
+            case "Lever":
+
+                InteractSymbol.SetActive(true);
+
+                if (Input.GetButtonDown("Fire1"))
+                {
+                    PointingAt.GetComponent<LeverScript>().Interact();
+                }
+
+                break;
+
             default:
                 InteractSymbol.SetActive(false);
                 break;
