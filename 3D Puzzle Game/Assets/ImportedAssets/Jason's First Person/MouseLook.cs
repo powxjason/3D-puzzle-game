@@ -41,8 +41,8 @@ public class MouseLook : MonoBehaviour
 
     void MouseInput()
     {
-        mouseX = Input.GetAxis("Mouse X");
-        mouseY = Input.GetAxis("Mouse Y");
+        mouseX = Input.GetAxisRaw("Mouse X");
+        mouseY = Input.GetAxisRaw("Mouse Y");
 
         //Debug.Log(mouseX + " + " + mouseY);
 

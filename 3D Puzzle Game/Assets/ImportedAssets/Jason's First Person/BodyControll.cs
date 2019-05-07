@@ -82,7 +82,7 @@ public class BodyControll : MonoBehaviour
 
         if (Input.GetButton("Run"))
         {
-            inputVector = inputVector * 2;
+            inputVector = inputVector * RunSpeedMutiply;
         }
             
 

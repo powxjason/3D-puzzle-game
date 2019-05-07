@@ -92,10 +92,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.7
-  m_Height: 1
+  m_Radius: 0.9
+  m_Height: 2.401481
   m_Direction: 1
-  m_Center: {x: 0, y: -0.5, z: 0}
+  m_Center: {x: 0, y: 0.0007404089, z: 0}
 --- !u!114 &3438811574034314100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,7 +112,7 @@ MonoBehaviour:
   ForwardSpeed: 4
   StrafeSpeed: 3
   BackPedalSpeed: 3
-  RunSpeedMutiply: 2
+  RunSpeedMutiply: 1.33
 --- !u!54 &3438811574034314101
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -157,7 +157,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HoldingPowerCell: 0
   PowerCellCount: 0
-  PowerCellPrefab: {fileID: 0}
   PowerCellIcon1: {fileID: 0}
   PowerCellIcon2: {fileID: 0}
   PowerCellIcon3: {fileID: 0}
