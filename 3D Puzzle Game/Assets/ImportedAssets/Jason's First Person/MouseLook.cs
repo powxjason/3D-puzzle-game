@@ -8,41 +8,58 @@ public class MouseLook : MonoBehaviour
     public float mouseY;
     public float HorizontalSensitivity;
     public float VerticalSensitivity;
-    public bool Locked;
+    public bool Locked = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        Locked = false;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        MouseLock();
         MouseInput();
         CameraSpin();
         //CameraMoveForward();
     }
 
-    void MouseLock()
+    public void MouseLock()
     {
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        Locked = true;
+    }
+
+    public void MouseUnlock()
+    {
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        Locked = false;
     }
 
     void MouseInput()
     {
-        mouseX = Input.GetAxisRaw("Mouse X");
-        mouseY = Input.GetAxisRaw("Mouse Y");
+
+        if (!Locked)
+        {
+            mouseX = Input.GetAxisRaw("Mouse X");
+            mouseY = Input.GetAxisRaw("Mouse Y");
+
+        }
+        else
+        {
+            mouseX = 0f;
+            mouseY = 0f;
+        }
 
         //Debug.Log(mouseX + " + " + mouseY);
 
